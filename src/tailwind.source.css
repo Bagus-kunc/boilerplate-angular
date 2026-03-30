@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@source "./app/**/*.{html,ts}";
+
+@theme {
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.141 0.005 285.82);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.141 0.005 285.82);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.141 0.005 285.82);
+  --color-primary: oklch(0.21 0.006 285.88);
+  --color-primary-foreground: oklch(0.985 0.001 106.42);
+  --color-secondary: oklch(0.967 0.001 286.38);
+  --color-secondary-foreground: oklch(0.21 0.006 285.88);
+  --color-muted: oklch(0.967 0.001 286.38);
+  --color-muted-foreground: oklch(0.552 0.011 285.93);
+  --color-accent: oklch(0.967 0.001 286.38);
+  --color-accent-foreground: oklch(0.21 0.006 285.88);
+  --color-destructive: oklch(0.577 0.245 27.33);
+  --color-destructive-foreground: oklch(0.577 0.245 27.33);
+  --color-border: oklch(0.92 0.004 286.32);
+  --color-input: oklch(0.92 0.004 286.32);
+  --color-ring: oklch(0.707 0.022 261.32);
+  --radius: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.dark {
+  --color-background: oklch(0.141 0.005 285.82);
+  --color-foreground: oklch(0.985 0.002 247.83);
+  --color-card: oklch(0.141 0.005 285.82);
+  --color-card-foreground: oklch(0.985 0.002 247.83);
+  --color-popover: oklch(0.141 0.005 285.82);
+  --color-popover-foreground: oklch(0.985 0.002 247.83);
+  --color-primary: oklch(0.985 0.002 247.83);
+  --color-primary-foreground: oklch(0.21 0.006 285.88);
+  --color-secondary: oklch(0.268 0.007 270.89);
+  --color-secondary-foreground: oklch(0.985 0.002 247.83);
+  --color-muted: oklch(0.268 0.007 270.89);
+  --color-muted-foreground: oklch(0.707 0.022 261.32);
+  --color-accent: oklch(0.268 0.007 270.89);
+  --color-accent-foreground: oklch(0.985 0.002 247.83);
+  --color-destructive: oklch(0.396 0.141 25.72);
+  --color-destructive-foreground: oklch(0.396 0.141 25.72);
+  --color-border: oklch(0.268 0.007 270.89);
+  --color-input: oklch(0.268 0.007 270.89);
+  --color-ring: oklch(0.442 0.017 285.78);
+}
+
+.glass {
+  @apply bg-background/60 backdrop-blur-lg border-b border-border/40;
+}
+
+/* Circular Theme Transition */
+::view-transition-group(root) {
+  animation: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  display: block;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}

@@ -26,7 +26,7 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/app/tailwind.css"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

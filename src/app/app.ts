@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, Rocket, Cpu, Layers, Github, Sun, Moon, Plus, Minus, RefreshCw, Smartphone } from 'lucide-angular';
-import { ThemeService } from '../../services/theme.service';
-import { CounterService } from '../../services/counter.service';
+import { ThemeService } from './theme.service';
+import { CounterService } from './counter.service';
 
 @Component({
   selector: 'app-root',
@@ -49,7 +49,7 @@ export class App {
     }
   ];
 
-  toggleTheme() {
-    this.themeService.toggleTheme();
+  toggleTheme(event: MouseEvent) {
+    this.themeService.toggleTheme(event);
   }
 }

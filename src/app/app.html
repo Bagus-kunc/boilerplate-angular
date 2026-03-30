@@ -12,7 +12,7 @@
         <a href="#demo" class="transition-colors hover:text-primary">Demo</a>
       </nav>
       <div class="flex items-center gap-4">
-        <button (click)="toggleTheme()" class="p-2 h-10 w-10 flex items-center justify-center rounded-md hover:bg-muted transition-colors border border-border">
+        <button (click)="toggleTheme($event)" class="p-2 h-10 w-10 flex items-center justify-center rounded-md hover:bg-muted transition-colors border border-border">
           @if (themeService.theme() === 'light') {
             <lucide-icon [name]="Moon" class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all"></lucide-icon>
           } @else {
