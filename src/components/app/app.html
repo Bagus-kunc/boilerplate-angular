@@ -1,0 +1,119 @@
+<div class="flex flex-col min-h-screen">
+  <!-- Navigation bar with glassmorphism -->
+  <header class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div class="container mx-auto px-4 flex h-16 items-center justify-between">
+      <div class="flex items-center gap-2">
+        <lucide-icon [name]="Rocket" class="h-6 w-6 text-primary"></lucide-icon>
+        <span class="text-xl font-bold tracking-tight">AngularScale</span>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <a href="#" class="transition-colors hover:text-primary">Home</a>
+        <a href="#features" class="transition-colors hover:text-primary">Features</a>
+        <a href="#demo" class="transition-colors hover:text-primary">Demo</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button (click)="toggleTheme()" class="p-2 h-10 w-10 flex items-center justify-center rounded-md hover:bg-muted transition-colors border border-border">
+          @if (themeService.theme() === 'light') {
+            <lucide-icon [name]="Moon" class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all"></lucide-icon>
+          } @else {
+            <lucide-icon [name]="Sun" class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all"></lucide-icon>
+          }
+        </button>
+        <button class="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:opacity-90">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Hero Section -->
+    <section class="relative py-20 lg:py-32 overflow-hidden bg-background">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px]"></div>
+      </div>
+
+      <div class="container mx-auto px-4 text-center">
+        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 animate-in fade-in slide-in-from-bottom-3">
+          Latest Angular 21 Ready
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8">
+          The Professional <br />
+          <span class="text-primary">Angular 2026 Boilerplate</span>
+        </h1>
+        <p class="max-w-[42rem] mx-auto text-muted-foreground text-lg sm:text-xl mb-10 leading-normal">
+          Accelerate your development with a pre-configured stack of Tailwind CSS 4, Signals, and Zoneless architecture.
+          Built for maximum performance and a premium user experience.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button class="bg-primary text-primary-foreground px-8 py-3 rounded-md text-lg font-medium hover:opacity-90 transition-all flex items-center gap-2">
+            <lucide-icon [name]="Github" size="20"></lucide-icon>
+            View on GitHub
+          </button>
+          <button class="border border-border bg-background hover:bg-muted px-8 py-3 rounded-md text-lg font-medium transition-all">
+            Documentation
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-20 bg-muted/30">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold tracking-tight mb-4">Powerful Core Technologies</h2>
+          <p class="text-muted-foreground text-lg">Everything you need to build state-of-the-art web apps.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          @for (feature of features; track feature.title) {
+            <div class="bg-background/50 backdrop-blur border border-border/50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="p-2 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
+                <lucide-icon [name]="feature.icon" size="20"></lucide-icon>
+              </div>
+              <h3 class="text-xl font-bold mb-2">{{ feature.title }}</h3>
+              <p class="text-muted-foreground">{{ feature.description }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- State management demo section -->
+    <section id="demo" class="py-20 lg:py-32">
+      <div class="container mx-auto px-4 flex flex-col items-center">
+        <div class="max-w-xl w-full mx-auto text-center border border-border rounded-3xl p-10 bg-card shadow-xl overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent -z-10"></div>
+          <h2 class="text-2xl font-bold mb-8">Angular Signal Store</h2>
+          
+          <div class="flex flex-col items-center gap-6">
+            <div class="text-7xl font-black text-primary font-mono tracking-tighter">
+              {{ counterService.count() }}
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <button (click)="counterService.decrement()" class="bg-secondary text-secondary-foreground hover:bg-secondary/80 p-3 h-14 w-14 rounded-full flex items-center justify-center transition-all">
+                <lucide-icon [name]="Minus" size="24"></lucide-icon>
+              </button>
+              <button (click)="counterService.reset()" class="bg-secondary text-secondary-foreground hover:bg-secondary/80 p-3 h-14 w-14 rounded-full flex items-center justify-center transition-all">
+                <lucide-icon [name]="RefreshCw" size="24"></lucide-icon>
+              </button>
+              <button (click)="counterService.increment()" class="bg-secondary text-secondary-foreground hover:bg-secondary/80 p-3 h-14 w-14 rounded-full flex items-center justify-center transition-all">
+                <lucide-icon [name]="Plus" size="24"></lucide-icon>
+              </button>
+            </div>
+            <p class="text-sm text-muted-foreground italic px-6">
+              State managed with Angular Signals. No Zone.js, just fast, re-active state management.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t py-12 bg-background flex justify-center items-center">
+    <div class="container mx-auto px-4 text-center text-muted-foreground">
+      <p>© 2026 AngularScale. Built for the modern web with precision.</p>
+    </div>
+  </footer>
+</div>
